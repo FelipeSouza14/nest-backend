@@ -33,9 +33,8 @@ export class TasksController {
     // Criando uma rota que deleta uma task pelo ID
     @Delete(":id")
     deleteTask(@Param('id') id: string){
-        console.log("ID ENVIADO: " + id)
 
-        return "Deletar a tarefa com o ID " + id
+        return this.taskService.delete(id);
     }
 
 }
