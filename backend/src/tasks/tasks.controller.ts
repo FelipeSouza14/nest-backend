@@ -23,13 +23,14 @@ export class TasksController {
         return this.taskService.create(body)
     }
 
+    // Criando uma rota que atualiza uma task pelo ID (pode ser tanto do tipo PATCH quanto do tipo PUT)
     @Patch(":id")
     updateTask(@Param('id') id: string, @Body() body: any){
-        console.log("ID", id)
-        console.log("Body", body)
-        return "Atualizando tarefa..."
+
+        return this.taskService.update(id, body)
     }
 
+    // Criando uma rota que deleta uma task pelo ID
     @Delete(":id")
     deleteTask(@Param('id') id: string){
         console.log("ID ENVIADO: " + id)
