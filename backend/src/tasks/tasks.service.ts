@@ -21,8 +21,8 @@ export class TasksService {
     }
 
     // Exibe apenas uma, filtrando pelo ID que é passado
-    findOne(id: string){
-        const task = this.tasks.find(tasks => tasks.id === Number(id))
+    findOne(id: number){
+        const task = this.tasks.find(tasks => tasks.id === id)
 
         if (task) return task;
 
@@ -49,9 +49,9 @@ export class TasksService {
     }
 
     // Atualiza uma task
-    update(id: string, updateTaskDto: UpdateTaskDto ){
+    update(id: number, updateTaskDto: UpdateTaskDto ){
         // Nessa função, o algoritmo encontra a tarefa a qual o id é igual ao id passado, e salva o index (localização dessa tarefa)
-        const taskIndex = this.tasks.findIndex(task => task.id === Number(id))
+        const taskIndex = this.tasks.findIndex(task => task.id === id)
 
         if (taskIndex < 0){
             throw new NotFoundException("Esta tarefa não existe!")
@@ -68,8 +68,8 @@ export class TasksService {
         return this.tasks[taskIndex]
     }
 
-    delete(id: string){
-        const taskIndex = this.tasks.findIndex(task => task.id === Number(id))
+    delete(id: number){
+        const taskIndex = this.tasks.findIndex(task => task.id === id)
 
         if (taskIndex < 0){
             throw new NotFoundException("Esta tarefa não existe!")
