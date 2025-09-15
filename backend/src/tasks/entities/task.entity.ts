@@ -4,5 +4,5 @@ export class Task {
     name: string;
     description: string;
     completed: boolean;
-
+    createdAt?: Date;
 }
