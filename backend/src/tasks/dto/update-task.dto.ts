@@ -18,7 +18,7 @@ import { CreateTaskDto } from '../dto/create-task.dto'
 //   readonly completed?: boolean;
 // }
 
-// Reaproveita o que já tem no CreateTaskDto, e, caso seja necessário, adiciona a mais também
+// O "PartialType" Reaproveita o que já tem no CreateTaskDto (transforma em um tipo opcional), e, caso seja necessário, pode adicionar a mais também (foi add o completed)
 export class UpdateTaskDto extends PartialType(CreateTaskDto) {
     @IsBoolean()
     @IsOptional()
