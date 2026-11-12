@@ -14,15 +14,6 @@ import { PaginationDto } from '../common/dto/pagination.dto';
 export class TasksService {
     constructor(private prisma: PrismaService) {}
 
-    private tasks: Task[] = [
-        {
-            id: 1,
-            name: 'Comprar Pães',
-            description: 'Estamos precisando de pães',
-            completed: false,
-        },
-    ];
-
     // Procura por todas as tasks e as exibe, sem filtro
     async findAll(paginationDto?: PaginationDto) {
         const { limit = 10, offset = 0 } = paginationDto || {};
