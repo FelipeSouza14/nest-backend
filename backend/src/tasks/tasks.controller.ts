@@ -1,15 +1,17 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
+import { PaginationDto } from '../common/dto/pagination.dto';
 
 @Controller('tasks')
 export class TasksController {
     constructor(private readonly taskService: TasksService){}
+
     // Criando uma rota que devolve todas as tasks
     @Get()
-    findAllTasks(){
-        return this.taskService.findAll()
+    findAllTasks(@Query() paginationDto: PaginationDto){
+        return this.taskService.findAll(paginationDto)
     }
 
     // Criando uma rota que devolve uma única task de acordo com o ID
