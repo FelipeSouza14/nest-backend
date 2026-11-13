@@ -4,7 +4,7 @@ DTO > Data Transfer Object (Objeto de transferencia de dados)
 > Se usa para representar quais dados e em que formatos uma determinada camada aceita e trabalha
 */
 
-import { IsNotEmpty, IsString, MinLength } from "class-validator";
+import { IsNotEmpty, IsNumber, IsString, MinLength } from "class-validator";
 
 export class CreateTaskDto {
 
@@ -19,4 +19,8 @@ export class CreateTaskDto {
   @MinLength(5, {message: "A descrição precisa ter mais de 5 caracteres!"})
   @IsNotEmpty()
   readonly description!: string;
+
+  @IsNumber()
+  @IsNotEmpty()
+  readonly userId!: number;
 }
