@@ -6,7 +6,7 @@
 
 generator client {
     provider = "prisma-client-js"
-    output   = "../generated/prisma"
+    // output   = "../generated/prisma"
 }
 
 datasource db {
@@ -19,6 +19,20 @@ model Task {
     name        String
     description String?
     completed   Boolean
-    
-    createdAt   DateTime?   @default(now())
+
+    createdAt DateTime? @default(now())
+
+    userId Int?
+    user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+    id           Int    @id @default(autoincrement())
+    name         String
+    passwordHash String
+    email        String @unique
+    Task Task[]
+
+    createdAt DateTime? @default(now())
+
 }
